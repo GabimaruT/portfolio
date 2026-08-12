@@ -55,6 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const clone = card.cloneNode(true);
         clone.dataset.sightIndex = setIndex * originalSightCount + cardIndex;
 
+        const repoLink = clone.querySelector(".sight-repo-link");
+        if (repoLink) {
+          repoLink.addEventListener("click", (e) => e.stopPropagation());
+        }
+
         clone.addEventListener("click", () => selectSightCard(clone));
         clone.addEventListener("keydown", (e) => {
           if (e.key === "Enter" || e.key === " ") {
